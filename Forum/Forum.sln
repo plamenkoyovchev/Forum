@@ -3,8 +3,57 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{4DBFB6E5-8223-46F1-87B5-E4280BD95C07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{51D6402E-A9BD-41C0-8D42-066F4FFB62F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{AF53CEAB-42F4-4A73-B087-EC4BB569D540}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Data", "Forum.Data\Forum.Data.csproj", "{793B308E-447C-4895-95C7-3309F5B31E62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Data.Models", "Forum.Data.Models\Forum.Data.Models.csproj", "{72B5EE2A-54E9-4A6E-9460-27AD57DE4DD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Data.Contracts", "Forum.Data.Contracts\Forum.Data.Contracts.csproj", "{F8083042-935D-458D-AA29-86DDBFBC811E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Web", "Forum.Web\Forum.Web.csproj", "{0C7CE7A3-44D8-438A-A297-8B70E27F9E43}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A5D9E4D7-FA4E-4772-9EF3-944A45640230}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{793B308E-447C-4895-95C7-3309F5B31E62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{793B308E-447C-4895-95C7-3309F5B31E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{793B308E-447C-4895-95C7-3309F5B31E62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{793B308E-447C-4895-95C7-3309F5B31E62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72B5EE2A-54E9-4A6E-9460-27AD57DE4DD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B5EE2A-54E9-4A6E-9460-27AD57DE4DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B5EE2A-54E9-4A6E-9460-27AD57DE4DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B5EE2A-54E9-4A6E-9460-27AD57DE4DD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8083042-935D-458D-AA29-86DDBFBC811E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8083042-935D-458D-AA29-86DDBFBC811E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8083042-935D-458D-AA29-86DDBFBC811E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8083042-935D-458D-AA29-86DDBFBC811E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C7CE7A3-44D8-438A-A297-8B70E27F9E43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C7CE7A3-44D8-438A-A297-8B70E27F9E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C7CE7A3-44D8-438A-A297-8B70E27F9E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C7CE7A3-44D8-438A-A297-8B70E27F9E43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{793B308E-447C-4895-95C7-3309F5B31E62} = {4DBFB6E5-8223-46F1-87B5-E4280BD95C07}
+		{72B5EE2A-54E9-4A6E-9460-27AD57DE4DD9} = {4DBFB6E5-8223-46F1-87B5-E4280BD95C07}
+		{F8083042-935D-458D-AA29-86DDBFBC811E} = {4DBFB6E5-8223-46F1-87B5-E4280BD95C07}
+		{0C7CE7A3-44D8-438A-A297-8B70E27F9E43} = {AF53CEAB-42F4-4A73-B087-EC4BB569D540}
 	EndGlobalSection
 EndGlobal
