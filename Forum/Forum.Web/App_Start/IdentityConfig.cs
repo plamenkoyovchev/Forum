@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Forum.Web.Models;
+using Forum.Data.Models;
+using Forum.Data;
 
 namespace Forum.Web
 {

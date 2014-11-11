@@ -167,7 +167,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -240,6 +239,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Forum.Data.Models\Forum.Data.Models.csproj">
+      <Project>{72b5ee2a-54e9-4a6e-9460-27ad57de4dd9}</Project>
+      <Name>Forum.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Forum.Data\Forum.Data.csproj">
+      <Project>{793b308e-447c-4895-95c7-3309f5b31e62}</Project>
+      <Name>Forum.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
