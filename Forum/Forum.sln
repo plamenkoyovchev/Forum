@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Data", "Forum.Data\Fo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Data.Models", "Forum.Data.Models\Forum.Data.Models.csproj", "{72B5EE2A-54E9-4A6E-9460-27AD57DE4DD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Data.Contracts", "Forum.Data.Contracts\Forum.Data.Contracts.csproj", "{F8083042-935D-458D-AA29-86DDBFBC811E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Data.Common", "Forum.Data.Contracts\Forum.Data.Common.csproj", "{F8083042-935D-458D-AA29-86DDBFBC811E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Web", "Forum.Web\Forum.Web.csproj", "{0C7CE7A3-44D8-438A-A297-8B70E27F9E43}"
 EndProject

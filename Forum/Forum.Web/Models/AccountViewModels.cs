@@ -49,9 +49,8 @@ namespace Forum.Web.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [StringLength(30, ErrorMessage = "The {0} must be at least {1} characters long.", MinimumLength = 6)]
+        public string Username { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -79,6 +78,10 @@ namespace Forum.Web.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(30, ErrorMessage = "The {0} must be at least {1} characters long.", MinimumLength = 6)]
+        public string Username { get; set; }
     }
 
     public class ResetPasswordViewModel
