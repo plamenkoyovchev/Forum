@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
@@ -23,7 +24,14 @@
 
         public string Content { get; set; }
 
+        public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
+
+        [DefaultValue("false")]
+        public bool IsBestAnswer { get; set; }
+
+        [DefaultValue("false")]
+        public bool IsImportant { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
     }
