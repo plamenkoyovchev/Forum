@@ -1,4 +1,4 @@
-﻿namespace Forum.Web.Models.Posts
+﻿namespace Forum.Web.ViewModels.Threads
 {
     using Forum.Data.Models;
     using System;
@@ -7,24 +7,21 @@
     using System.Linq.Expressions;
     using System.Web;
 
-    public class PostViewModel
+    public class ThreadViewModel
     {
-        public static Expression<Func<Post, PostViewModel>> FromPost
+        public static Expression<Func<Thread, ThreadViewModel>> FromThread
         {
             get
             {
-                return post => new PostViewModel
+                return thread => new ThreadViewModel
                 {
-                    Title = post.Title,
-                    Content = post.Content,
-                    Username = post.User.UserName
+                    Title = thread.Title,
+                    Username = thread.User.UserName
                 };
             }
         }
 
         public string Title { get; set; }
-
-        public string Content { get; set; }
 
         public string Username { get; set; }
     }

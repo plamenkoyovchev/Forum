@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Forum.Web.Models;
+using Forum.Web.ViewModels;
 using Forum.Data.Models;
 using Forum.Data;
 

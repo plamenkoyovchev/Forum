@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Forum.Web.ViewModels.Threads.ThreadViewModel>
+
+@{
+    ViewBag.Title = "Threads";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@if (Model != null)
+{
+    foreach (var thread in Model)
+    {
+        <div class="form-group">
+            @thread.Title
+            <p class="alert">@thread.Username</p>
+        </div>
+    }
+}
+else
+{
+    <div class="alert-info">There are no threads yet!</div>
+}

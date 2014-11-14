@@ -2,7 +2,7 @@
 {
     using Forum.Data.Common.Repository;
     using Forum.Data.Models;
-    using Forum.Web.Models.Posts;
+    using Forum.Web.ViewModels.Posts;
 
     using System;
     using System.Collections.Generic;

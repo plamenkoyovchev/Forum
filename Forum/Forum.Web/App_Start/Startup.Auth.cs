@@ -5,7 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using Forum.Web.Models;
+using Forum.Web.ViewModels;
 using Forum.Data;
 using Forum.Data.Models;
 
