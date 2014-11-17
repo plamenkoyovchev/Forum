@@ -1,0 +1,23 @@
+﻿@model Forum.Web.InputModels.Categories.CategoryInputModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Create", "Category", null, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name)
+        @Html.EditorFor(x => x.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Description)
+        @Html.EditorFor(x => x.Description)
+    </div>
+    
+    <input type="submit" class="btn btn-default" />
+}

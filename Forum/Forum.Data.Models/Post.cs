@@ -28,10 +28,10 @@
         public virtual ApplicationUser User { get; set; }
 
         [DefaultValue("false")]
-        public bool IsBestAnswer { get; set; }
+        public bool? IsBestAnswer { get; set; }
 
         [DefaultValue("false")]
-        public bool IsImportant { get; set; }
+        public bool? IsImportant { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
     }

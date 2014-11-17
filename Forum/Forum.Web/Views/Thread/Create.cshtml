@@ -1,0 +1,22 @@
+﻿@model Forum.Web.InputModels.Threads.ThreadInputModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Create", "Thread", null, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    @Html.LabelFor(x=>x.Title)
+    @Html.EditorFor(x=>x.Title)
+    @Html.LabelFor(x => x.Content)
+    @Html.EditorFor(x => x.Content)
+    @Html.LabelFor(x=>x.CategoryId,"Category")
+    @Html.DropDownListFor(x => x.CategoryId, (SelectList)ViewBag.CategoryDdl)
+    
+    <input type="submit" class="btn btn-default" />
+}
+

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Forum.Web.ViewModels.Categories.CategoryViewModel>
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@foreach (var cat in Model)
+{
+    <div class="list-group">
+        <p class="list-group-item">@cat.Name - @cat.Description</p>
+    </div>
+}
+
