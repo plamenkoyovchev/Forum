@@ -15,6 +15,7 @@
 
         [Required]
         [StringLength(500, MinimumLength = 20)]
+        [DataType(DataType.MultilineText)]
         public string Content { get; set; }
 
         public long ThreadId { get; set; }

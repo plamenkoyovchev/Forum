@@ -1,17 +1,23 @@
 ﻿@model Forum.Web.ViewModels.Threads.ThreadDetailViewModel
 
 <h2>@Model.Title</h2>
-@Ajax.ActionLink("Post answer", "PostAnswer", "Thread", new { threadId = Model.Id }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, HttpMethod = "GET", UpdateTargetId = "post-answer-box", AllowCache = false }, new { @class = "btn btn-default" })
+@if (User.Identity.IsAuthenticated)
+{
+    @Ajax.ActionLink("Post answer", "PostAnswer", "Thread", new { threadId = Model.Id },
+                    new AjaxOptions() { InsertionMode = InsertionMode.Replace, HttpMethod = "GET", UpdateTargetId = "post-answer-box", AllowCache = false },
+                    new { @class = "btn btn-default", data_toggle = "modal", data_target = "#post-answer-box" })
+}
 
-<div id="post-answer-box">
-
+<div class="modal fade" id="post-answer-box" role="dialog">
 </div>
-<div>
+
+<br /><br />
+<div class="well">
     <div>@Model.Title</div>
     <div>@Model.Content</div>
     <div>by: @Model.AuthorName</div>
 </div>
 <div id="posts-container">
-   @Html.Partial("_PostsList", Model.Posts)
+    @Html.Partial("_PostsList", Model.Posts)
 </div>
 

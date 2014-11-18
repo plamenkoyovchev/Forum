@@ -98,6 +98,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public PartialViewResult PostAnswer(long threadId)
         {
             var model = new PostInputModel
