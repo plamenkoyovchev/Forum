@@ -12,6 +12,6 @@
     <div>by: @Model.AuthorName</div>
 </div>
 <div id="posts-container">
-    @Html.Action("GetPosts", new { threadId = Model.Id })
+   @Html.Partial("_PostsList", Model.Posts)
 </div>
 

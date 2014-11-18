@@ -8,8 +8,10 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Linq.Expressions;
     using System.Web;
     using System.Web.Mvc;
+    using System.Data.Entity;
 
     public class ThreadController : BaseController
     {
@@ -88,18 +90,11 @@
                 Id = thread.Id,
                 Title = thread.Title,
                 Content = thread.Content,
-                AuthorName = thread.User.UserName
+                AuthorName = thread.User.UserName,
+                Posts = thread.Posts
             };
 
             return this.View(threadDetail);
-        }
-
-        [HttpGet]
-        public ActionResult GetPosts(long threadId)
-        {
-            var posts = this.posts.All().Where(x => x.ThreadId == threadId);
-
-            return this.PartialView("_PostsList", posts);
         }
 
         [HttpGet]
@@ -130,7 +125,8 @@
                 this.posts.Add(newPost);
                 this.posts.SaveChanges();
 
-                return RedirectToAction("GetPosts", new { threadId = model.ThreadId });
+                var posts = this.posts.All().Include(u=>u.User).Where(x => x.ThreadId == model.ThreadId);
+                return this.PartialView("_PostsList", posts);
             }
 
             return this.PartialView("_PostAnswer", model);
