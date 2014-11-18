@@ -59,6 +59,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Forum.Data.Contracts\Forum.Data.Common.csproj">
+      <Project>{f8083042-935d-458d-aa29-86ddbfbc811e}</Project>
+      <Name>Forum.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Forum.Data.Models\Forum.Data.Models.csproj">
       <Project>{72b5ee2a-54e9-4a6e-9460-27ad57de4dd9}</Project>
       <Name>Forum.Data.Models</Name>

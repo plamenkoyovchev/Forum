@@ -14,24 +14,28 @@
     using System.Data.Entity;
 
     using PagedList;
+    using Forum.Web.Infrastructure.Sanitizer;
 
     public class ThreadController : BaseController
     {
         private readonly IRepository<Post> posts;
         private readonly IRepository<Thread> threads;
+        private readonly ISanitizer sanitizer;
         private readonly IRepository<Category> categories;
 
-        public ThreadController(IRepository<Thread> threads, IRepository<Category> categories, IRepository<Post> posts)
+        public ThreadController(IRepository<Thread> threads, IRepository<Category> categories,
+            IRepository<Post> posts, ISanitizer sanitizer)
         {
             this.threads = threads;
             this.categories = categories;
+            this.sanitizer = sanitizer;
             this.posts = posts;
         }
 
         [HttpGet]
         public ActionResult Index(int page = 1, int pageSize = 10)
         {
-            var threads = this.threads.All().OrderByDescending(t=>t.Id).Select(ThreadViewModel.FromThread);
+            var threads = this.threads.All().OrderByDescending(t => t.Id).Select(ThreadViewModel.FromThread);
             var model = new PagedList<ThreadViewModel>(threads, page, pageSize);
 
             return this.View(model);
@@ -92,7 +96,7 @@
             {
                 Id = thread.Id,
                 Title = thread.Title,
-                Content = thread.Content,
+                Content = sanitizer.Sanitize(thread.Content),
                 AuthorName = thread.User.UserName
             };
 
@@ -131,7 +135,7 @@
                 this.posts.Add(newPost);
                 this.posts.SaveChanges();
 
-                var posts = this.posts.All().Include(u=>u.User).Where(x => x.ThreadId == model.ThreadId);
+                var posts = this.posts.All().Include(u => u.User).Where(x => x.ThreadId == model.ThreadId);
                 return this.PartialView("_PostsList", posts);
             }
 

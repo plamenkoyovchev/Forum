@@ -18,7 +18,7 @@
 <br /><br />
 <blockquote>
     <p class="text-primary">@Model.Title</p>
-    <p>@Model.Content</p>
+    <p>@Html.Raw(Model.Content)</p>
     <small>by: <cite title="Source Title">@Model.AuthorName</cite></small>
 </blockquote>
 
