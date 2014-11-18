@@ -13,6 +13,8 @@
     using System.Web.Mvc;
     using System.Data.Entity;
 
+    using PagedList;
+
     public class ThreadController : BaseController
     {
         private readonly IRepository<Post> posts;
@@ -27,11 +29,12 @@
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 10)
         {
-            var threads = this.threads.All().Select(ThreadViewModel.FromThread);
+            var threads = this.threads.All().OrderByDescending(t=>t.Id).Select(ThreadViewModel.FromThread);
+            var model = new PagedList<ThreadViewModel>(threads, page, pageSize);
 
-            return this.View(threads);
+            return this.View(model);
         }
 
         [HttpGet]
@@ -71,7 +74,7 @@
         }
 
         [HttpGet]
-        public ActionResult Details(long id, string url)
+        public ActionResult Details(long id, string url, int page = 1, int pageSize = 10)
         {
             if (id < 0)
             {
@@ -90,9 +93,11 @@
                 Id = thread.Id,
                 Title = thread.Title,
                 Content = thread.Content,
-                AuthorName = thread.User.UserName,
-                Posts = thread.Posts
+                AuthorName = thread.User.UserName
             };
+
+            var threadPosts = new PagedList<Post>(thread.Posts, page, pageSize);
+            threadDetail.Posts = threadPosts;
 
             return this.View(threadDetail);
         }
@@ -131,6 +136,14 @@
             }
 
             return this.PartialView("_PostAnswer", model);
+        }
+
+        public ActionResult GetPostsForPager(int page = 1, int pageSize = 10)
+        {
+            var posts = this.posts.All().OrderByDescending(p => p.Id);
+            var model = new PagedList<Post>(posts, page, pageSize);
+
+            return PartialView("_PostsPager", model);
         }
     }
 }

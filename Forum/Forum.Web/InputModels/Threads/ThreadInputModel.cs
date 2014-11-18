@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 namespace Forum.Web.InputModels.Threads
 {
     public class ThreadInputModel
@@ -7,8 +8,9 @@ namespace Forum.Web.InputModels.Threads
         [StringLength(50,MinimumLength=10)]
         public string Title { get; set; }
 
-        [StringLength(500, MinimumLength = 20)]
+        [AllowHtml]
         [DataType(DataType.MultilineText)]
+        [StringLength(500, MinimumLength = 20)]
         public string Content { get; set; }
 
         [Required(ErrorMessage="Must choose category.")]

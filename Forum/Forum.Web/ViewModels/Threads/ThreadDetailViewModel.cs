@@ -1,4 +1,5 @@
 ﻿using Forum.Data.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,6 @@ namespace Forum.Web.ViewModels.Threads
 {
     public class ThreadDetailViewModel
     {
-        public ThreadDetailViewModel()
-        {
-            this.Posts = new HashSet<Post>();
-        }
-
         public long Id { get; set; }
 
         public string Title { get; set; }
@@ -21,6 +17,6 @@ namespace Forum.Web.ViewModels.Threads
 
         public string AuthorName { get; set; }
 
-        public ICollection<Post> Posts { get; set; }
+        public PagedList<Post> Posts { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Forum.Web.ViewModels.Categories.CategoryViewModel>
+﻿@model PagedList.PagedList<Forum.Web.ViewModels.Categories.CategoryViewModel>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Categories";
@@ -13,3 +14,10 @@
     </div>
 }
 
+<div>
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = 10 }))
+        Showing @Model.FirstItemOnPage to @Model.LastItemOnPage
+        of @Model.TotalItemCount categories
+    </div>
+</div>

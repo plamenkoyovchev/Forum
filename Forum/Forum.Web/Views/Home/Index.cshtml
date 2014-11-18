@@ -1,10 +1,19 @@
-﻿@model IEnumerable<Forum.Web.ViewModels.Posts.PostViewModel>
+﻿@model IEnumerable<Forum.Web.ViewModels.Threads.ThreadViewModel>
 
-@foreach (var post in Model)
-{
-    <div>
-        @post.Title
-    </div>
-    <div>@post.Content</div>
-    <p>@post.Username</p>
+@{
+    ViewBag.Title = "Questions";
+
+    var regex = new System.Text.RegularExpressions.Regex("[;,.`'\"_@!$%&*()\u0020\002B]");
 }
+
+<h1>@ViewBag.Title</h1>
+<div class="list-group">
+    @foreach (var thread in Model)
+    {
+        <a href="@Url.Action("Details", "Thread", new { id = thread.Id, url = regex.Replace(thread.Title,"-") })" class="list-group-item">
+            <h4 class="list-group-item-heading">@thread.Title</h4>
+            <p class="list-group-item-text">@thread.Content</p>
+            <p class="list-group-item-text">by: @thread.Username</p>
+        </a>
+    }
+</div>

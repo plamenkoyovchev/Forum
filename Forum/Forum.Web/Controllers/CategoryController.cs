@@ -9,7 +9,8 @@
     using System.Web.Mvc;
 
     using Forum.Web.ViewModels.Categories;
-using Forum.Web.InputModels.Categories;
+    using Forum.Web.InputModels.Categories;
+    using PagedList;
 
     public class CategoryController : BaseController
     {
@@ -21,11 +22,12 @@ using Forum.Web.InputModels.Categories;
         }
 
         // GET: Category
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 10)
         {
-            var categories = this.categories.All().Select(CategoryViewModel.FromCategory);
+            var categories = this.categories.All().OrderByDescending(x => x.Id).Select(CategoryViewModel.FromCategory);
+            PagedList<CategoryViewModel> model = new PagedList<CategoryViewModel>(categories, page, pageSize);
 
-            return View(categories);
+            return View(model);
         }
 
         [HttpGet]

@@ -1,5 +1,9 @@
 ﻿@model Forum.Web.ViewModels.Threads.ThreadDetailViewModel
 
+@{
+    var regex = new System.Text.RegularExpressions.Regex("[;,.`'\"_@!$%&*()\u0020\002B]");
+}
+
 <h2>@Model.Title</h2>
 @if (User.Identity.IsAuthenticated)
 {
@@ -12,12 +16,15 @@
 </div>
 
 <br /><br />
-<div class="well">
-    <div>@Model.Title</div>
-    <div>@Model.Content</div>
-    <div>by: @Model.AuthorName</div>
-</div>
+<blockquote>
+    <p class="text-primary">@Model.Title</p>
+    <p>@Model.Content</p>
+    <small>by: <cite title="Source Title">@Model.AuthorName</cite></small>
+</blockquote>
+
 <div id="posts-container">
     @Html.Partial("_PostsList", Model.Posts)
 </div>
+
+@Html.Partial("_PostsPager", Model.Posts, new ViewDataDictionary { { "id", Model.Id }, { "url" , regex.Replace(Model.Title,"-") } })
 

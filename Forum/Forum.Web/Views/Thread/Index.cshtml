@@ -1,9 +1,10 @@
-﻿@model IEnumerable<Forum.Web.ViewModels.Threads.ThreadViewModel>
+﻿@model PagedList.PagedList<Forum.Web.ViewModels.Threads.ThreadViewModel>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Threads";
 
-    var regex = new System.Text.RegularExpressions.Regex("[;,.`'\"_@!#$%&*()\u0020\002B]");
+    var regex = new System.Text.RegularExpressions.Regex("[;,.`'\"_@!$%&*()\u0020\002B]");
 }
 
 <h1>@ViewBag.Title</h1>
@@ -22,3 +23,11 @@ else
 {
     <div class="alert-info">There are no threads yet!</div>
 }
+
+<div>
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = 10 }))
+        Showing @Model.FirstItemOnPage to @Model.LastItemOnPage
+        of @Model.TotalItemCount questions
+    </div>
+</div>

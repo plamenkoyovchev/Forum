@@ -1,0 +1,15 @@
+﻿@model PagedList.PagedList<Forum.Data.Models.Post>
+@using PagedList.Mvc;
+
+@{
+    var threadId = ViewData["id"];
+    var url = ViewData["url"];
+}
+
+<div>
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Details", new { id = threadId, url = url, page, pageSize = 10 }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+        Showing @Model.FirstItemOnPage to @Model.LastItemOnPage
+        of @Model.TotalItemCount categories
+    </div>
+</div>

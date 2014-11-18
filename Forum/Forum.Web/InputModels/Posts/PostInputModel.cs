@@ -6,6 +6,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Web;
+    using System.Web.Mvc;
 
     public class PostInputModel
     {
@@ -14,6 +15,7 @@
         public string Title { get; set; }
 
         [Required]
+        [AllowHtml]
         [StringLength(500, MinimumLength = 20)]
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
