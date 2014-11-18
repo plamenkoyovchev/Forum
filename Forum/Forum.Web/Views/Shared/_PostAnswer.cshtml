@@ -1,6 +1,6 @@
 ﻿@model Forum.Web.InputModels.Posts.PostInputModel
 
-@using (Ajax.BeginForm("PostAnswer", "Thread", null, new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, AllowCache=false, OnSuccess="hideForm" }, new { id = "post-answer-form" }))
+@using (Ajax.BeginForm("PostAnswer", "Thread", null, new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, AllowCache = false, UpdateTargetId = "posts-container", OnSuccess = "hideForm" }, new { id = "post-answer-form" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()

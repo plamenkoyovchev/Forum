@@ -11,7 +11,7 @@
     <div>@Model.Content</div>
     <div>by: @Model.AuthorName</div>
 </div>
-<div>
+<div id="posts-container">
     @Html.Action("GetPosts", new { threadId = Model.Id })
 </div>
 

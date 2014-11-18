@@ -95,7 +95,6 @@
         }
 
         [HttpGet]
-        [ChildActionOnly]
         public ActionResult GetPosts(long threadId)
         {
             var posts = this.posts.All().Where(x => x.ThreadId == threadId);
@@ -131,7 +130,7 @@
                 this.posts.Add(newPost);
                 this.posts.SaveChanges();
 
-                return RedirectToAction("Details", new { id = model.ThreadId, url = string.Empty });
+                return RedirectToAction("GetPosts", new { threadId = model.ThreadId });
             }
 
             return this.PartialView("_PostAnswer", model);
