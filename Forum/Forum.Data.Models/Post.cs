@@ -1,6 +1,5 @@
 ﻿namespace Forum.Data.Models
 {
-    using ForumSystem.Data.Common.Contracts;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -10,7 +9,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Post:IDeletableEntity
+    public class Post
     {
         public Post()
         {
@@ -29,23 +28,14 @@
         public virtual ApplicationUser User { get; set; }
 
         [DefaultValue("false")]
-        public bool IsBestAnswer { get; set; }
+        public bool? IsBestAnswer { get; set; }
 
         [DefaultValue("false")]
-        public bool IsImportant { get; set; }
+        public bool? IsImportant { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
 
-        public bool IsDeleted
-        {
-            get;
-            set;
-        }
-
-        public DateTime? DeletedOn
-        {
-            get;
-            set;
-        }
+        public long? ThreadId { get; set; }
+        public virtual Thread Thread { get; set; }
     }
 }

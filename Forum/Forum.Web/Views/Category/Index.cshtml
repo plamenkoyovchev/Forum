@@ -1,0 +1,23 @@
+﻿@model PagedList.PagedList<Forum.Web.ViewModels.Categories.CategoryViewModel>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@foreach (var cat in Model)
+{
+    <div class="list-group">
+        <p class="list-group-item">@cat.Name - @cat.Description</p>
+    </div>
+}
+
+<div>
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, pageSize = 10 }))
+        Showing @Model.FirstItemOnPage to @Model.LastItemOnPage
+        of @Model.TotalItemCount categories
+    </div>
+</div>

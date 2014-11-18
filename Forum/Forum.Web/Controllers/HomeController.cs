@@ -3,7 +3,7 @@
     using Forum.Data.Common.Repository;
     using Forum.Data.Models;
     using Forum.Web.ViewModels.Posts;
-
+    using Forum.Web.ViewModels.Threads;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -12,18 +12,18 @@
 
     public class HomeController : Controller
     {
-        private readonly IRepository<Post> posts;
+        private readonly IRepository<Thread> threads;
 
-        public HomeController(IRepository<Post> posts)
+        public HomeController(IRepository<Thread> threads)
         {
-            this.posts = posts;
+            this.threads = threads;
         }
 
         public ActionResult Index()
         {
-            var posts = this.posts.All().Select(PostViewModel.FromPost);
+            var threads = this.threads.All().Select(ThreadViewModel.FromThread);
 
-            return this.View(posts);
+            return this.View(threads);
         }
     }
 }

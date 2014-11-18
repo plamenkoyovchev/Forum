@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Forum.Data.Models.Post>
+
+@if (Model != null)
+{
+    foreach (var post in Model)
+    {
+        <div class="panel panel-default">
+            <h4 class="panel-heading remove-margin-top">@post.Title</h4>
+            <h3 class="panel-title">@post.Title</h3>
+            <p class="panel-body">@post.Content</p>
+            <p class="panel-body">@post.User.UserName</p>
+        </div>
+        <hr />
+    }
+}
+else
+{
+    <div class="panel panel-info">
+        No posts.
+    </div>
+}

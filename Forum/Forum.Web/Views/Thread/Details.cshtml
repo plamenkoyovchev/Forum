@@ -1,0 +1,30 @@
+﻿@model Forum.Web.ViewModels.Threads.ThreadDetailViewModel
+
+@{
+    var regex = new System.Text.RegularExpressions.Regex("[;,.`'\"_@!$%&*()\u0020\002B]");
+}
+
+<h2>@Model.Title</h2>
+@if (User.Identity.IsAuthenticated)
+{
+    @Ajax.ActionLink("Post answer", "PostAnswer", "Thread", new { threadId = Model.Id },
+                    new AjaxOptions() { InsertionMode = InsertionMode.Replace, HttpMethod = "GET", UpdateTargetId = "post-answer-box", AllowCache = false },
+                    new { @class = "btn btn-default", data_toggle = "modal", data_target = "#post-answer-box" })
+}
+
+<div class="modal fade" id="post-answer-box" role="dialog">
+</div>
+
+<br /><br />
+<blockquote>
+    <p class="text-primary">@Model.Title</p>
+    <p>@Model.Content</p>
+    <small>by: <cite title="Source Title">@Model.AuthorName</cite></small>
+</blockquote>
+
+<div id="posts-container">
+    @Html.Partial("_PostsList", Model.Posts)
+</div>
+
+@Html.Partial("_PostsPager", Model.Posts, new ViewDataDictionary { { "id", Model.Id }, { "url" , regex.Replace(Model.Title,"-") } })
+
