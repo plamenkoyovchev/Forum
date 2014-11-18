@@ -268,6 +268,10 @@
       <Project>{793b308e-447c-4895-95c7-3309f5b31e62}</Project>
       <Name>Forum.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Forum.Web.Infrastructure\Forum.Web.Infrastructure.csproj">
+      <Project>{6110a766-6fd2-465d-8a9c-253e83dc2bf8}</Project>
+      <Name>Forum.Web.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

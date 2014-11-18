@@ -13,6 +13,9 @@ namespace Forum.Web.App_Start
     using System.Data.Entity;
     using Forum.Data;
     using Forum.Data.Common.Repository;
+    using Forum.Web.Infrastructure.Sanitizer;
+    using Forum.Data.Models;
+    using ForumSystem.Data.Common.Repository;
 
     public static class NinjectWebCommon 
     {
@@ -66,6 +69,9 @@ namespace Forum.Web.App_Start
         {
             kernel.Bind<DbContext>().To<ApplicationDbContext>();
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
+            kernel.Bind(typeof(IRepository<Post>)).To(typeof(DeletableEntityRepository<Post>));
+
+            kernel.Bind<ISanitizer>().To<HtmlSanitizerAdapter>();
         }        
     }
 }
