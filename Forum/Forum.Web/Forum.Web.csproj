@@ -178,11 +178,13 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\ThreadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="InputModels\Categories\CategoryInputModel.cs" />
+    <Compile Include="InputModels\Posts\PostInputModel.cs" />
     <Compile Include="InputModels\Threads\ThreadInputModel.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\Categories\CategoryViewModel.cs" />
@@ -190,6 +192,7 @@
     <Compile Include="ViewModels\Posts\PostViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Threads\ThreadDetailViewModel.cs" />
     <Compile Include="ViewModels\Threads\ThreadViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +208,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -253,10 +258,14 @@
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Category\Create.cshtml" />
     <Content Include="Views\Thread\Create.cshtml" />
+    <Content Include="Views\Thread\Details.cshtml" />
+    <Content Include="Views\Shared\_PostAnswer.cshtml" />
+    <Content Include="Views\Shared\_PostsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Post\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

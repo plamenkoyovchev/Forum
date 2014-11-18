@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Forum.Data.Models.Post>
+
+@if (Model != null)
+{
+    foreach (var post in Model)
+    {
+        <div class="list-group">
+            <div class="list-group-item-heading">
+                @post.Title
+            </div>
+            @post.Content
+            @post.User.UserName
+        </div>
+    }
+}
+else
+{
+    <div>
+        No posts.
+    </div>
+}

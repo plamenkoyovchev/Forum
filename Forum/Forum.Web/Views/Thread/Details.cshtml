@@ -1,0 +1,17 @@
+﻿@model Forum.Web.ViewModels.Threads.ThreadDetailViewModel
+
+<h2>@Model.Title</h2>
+@Ajax.ActionLink("Post answer", "PostAnswer", "Thread", new { threadId = Model.Id }, new AjaxOptions() { InsertionMode = InsertionMode.Replace, HttpMethod = "GET", UpdateTargetId = "post-answer-box", AllowCache = false }, new { @class = "btn btn-default" })
+
+<div id="post-answer-box">
+
+</div>
+<div>
+    <div>@Model.Title</div>
+    <div>@Model.Content</div>
+    <div>by: @Model.AuthorName</div>
+</div>
+<div>
+    @Html.Action("GetPosts", new { threadId = Model.Id })
+</div>
+

@@ -1,0 +1,28 @@
+﻿@model Forum.Web.InputModels.Posts.PostInputModel
+
+@using (Ajax.BeginForm("PostAnswer", "Thread", null, new AjaxOptions() { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, AllowCache=false, OnSuccess="hideForm" }, new { id = "post-answer-form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    @Html.HiddenFor(model=>model.ThreadId)
+    @Html.LabelFor(x => x.Title)
+    @Html.EditorFor(x => x.Title)
+
+    @Html.LabelFor(x => x.Content)
+    @Html.EditorFor(x => x.Content)
+
+    <input type="submit" class="btn btn-default" />
+}
+
+@{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+
+
+        function hideForm() {
+            $("#post-answer-form").hide();
+        }
+
+</script>

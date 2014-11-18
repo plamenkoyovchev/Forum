@@ -34,5 +34,8 @@
         public bool? IsImportant { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public long? ThreadId { get; set; }
+        public virtual Thread Thread { get; set; }
     }
 }

@@ -15,11 +15,14 @@
             {
                 return thread => new ThreadViewModel
                 {
+                    Id = thread.Id,
                     Title = thread.Title,
                     Username = thread.User.UserName
                 };
             }
         }
+
+        public long Id { get; set; }
 
         public string Title { get; set; }
 

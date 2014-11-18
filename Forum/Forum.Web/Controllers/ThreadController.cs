@@ -2,6 +2,7 @@
 {
     using Forum.Data.Common.Repository;
     using Forum.Data.Models;
+    using Forum.Web.InputModels.Posts;
     using Forum.Web.InputModels.Threads;
     using Forum.Web.ViewModels.Threads;
     using System;
@@ -12,13 +13,15 @@
 
     public class ThreadController : BaseController
     {
+        private readonly IRepository<Post> posts;
         private readonly IRepository<Thread> threads;
         private readonly IRepository<Category> categories;
 
-        public ThreadController(IRepository<Thread> threads, IRepository<Category> categories)
+        public ThreadController(IRepository<Thread> threads, IRepository<Category> categories, IRepository<Post> posts)
         {
             this.threads = threads;
             this.categories = categories;
+            this.posts = posts;
         }
 
         [HttpGet]
@@ -30,6 +33,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Create()
         {
             var model = new ThreadInputModel();
@@ -62,6 +66,75 @@
             ViewBag.CategoryDdl = new SelectList(this.categories.All().Where(x => x.IsActive), "Id", "Name", model.CategoryId);
 
             return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Details(long id, string url)
+        {
+            if (id < 0)
+            {
+                return HttpNotFound();
+            }
+
+            var thread = this.threads.GetById(id);
+
+            if (thread == null)
+            {
+                return HttpNotFound();
+            }
+
+            var threadDetail = new ThreadDetailViewModel
+            {
+                Id = thread.Id,
+                Title = thread.Title,
+                Content = thread.Content,
+                AuthorName = thread.User.UserName
+            };
+
+            return this.View(threadDetail);
+        }
+
+        [HttpGet]
+        [ChildActionOnly]
+        public ActionResult GetPosts(long threadId)
+        {
+            var posts = this.posts.All().Where(x => x.ThreadId == threadId);
+
+            return this.PartialView("_PostsList", posts);
+        }
+
+        [HttpGet]
+        public PartialViewResult PostAnswer(long threadId)
+        {
+            var model = new PostInputModel
+            {
+                ThreadId = threadId
+            };
+
+            return this.PartialView("_PostAnswer", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PostAnswer(PostInputModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var newPost = new Post
+                {
+                    Title = model.Title,
+                    Content = model.Content,
+                    ThreadId = model.ThreadId,
+                    UserId = this.CurrentUserId
+                };
+
+                this.posts.Add(newPost);
+                this.posts.SaveChanges();
+
+                return RedirectToAction("Details", new { id = model.ThreadId, url = string.Empty });
+            }
+
+            return this.PartialView("_PostAnswer", model);
         }
     }
 }

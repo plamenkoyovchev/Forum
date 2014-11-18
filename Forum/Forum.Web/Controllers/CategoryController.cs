@@ -29,6 +29,7 @@ using Forum.Web.InputModels.Categories;
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Create()
         {
             var model = new CategoryInputModel();

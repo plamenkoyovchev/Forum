@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Threads";
+
+    var regex = new System.Text.RegularExpressions.Regex("[;,.`'\"_@!#$%&*()\u0020\002B]");
 }
 
 <h1>@ViewBag.Title</h1>
@@ -11,7 +13,7 @@
     foreach (var thread in Model)
     {
         <div class="form-group">
-            @thread.Title
+            @Html.ActionLink(thread.Title, "Details", new { id = thread.Id, url = regex.Replace(thread.Title,"-") })
             <p class="alert">@thread.Username</p>
         </div>
     }
