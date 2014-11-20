@@ -69,6 +69,7 @@ namespace Forum.Web.App_Start
         {
             kernel.Bind<DbContext>().To<ApplicationDbContext>();
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
+
             kernel.Bind(typeof(IRepository<Post>)).To(typeof(DeletableEntityRepository<Post>));
 
             kernel.Bind<ISanitizer>().To<HtmlSanitizerAdapter>();

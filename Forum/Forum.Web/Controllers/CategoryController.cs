@@ -15,8 +15,10 @@
     public class CategoryController : BaseController
     {
         private IRepository<Category> categories;
+        private IRepository<ApplicationUser> users;
 
-        public CategoryController(IRepository<Category> categories)
+        public CategoryController(IRepository<ApplicationUser> users, IRepository<Category> categories)
+            : base(users)
         {
             this.categories = categories;
         }

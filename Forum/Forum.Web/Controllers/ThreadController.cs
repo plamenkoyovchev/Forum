@@ -23,8 +23,9 @@
         private readonly ISanitizer sanitizer;
         private readonly IRepository<Category> categories;
 
-        public ThreadController(IRepository<Thread> threads, IRepository<Category> categories,
+        public ThreadController(IRepository<ApplicationUser> users, IRepository<Thread> threads, IRepository<Category> categories,
             IRepository<Post> posts, ISanitizer sanitizer)
+            : base(users)
         {
             this.threads = threads;
             this.categories = categories;
